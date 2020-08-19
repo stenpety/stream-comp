@@ -15,14 +15,14 @@ public class Bloom<Key>{
 		this.k = k;
 		A = new boolean[n];//initializes to false
 		hash = new Hash[k]; // build an array of k hash functions
-		for(int i=0;i<k;i++){
+		for(int i=0; i<k; ++i) {
 			hash[i] = new Hash();
 		}
 	}
 	
 	public void insert(Key key){
 		int h = Hash.h_basic(key);
-		for(int i=0;i<k;i++){
+		for(int i=0; i<k; i++){
 			int hu = hash[i].h2u(h, n); // hash the key with each
 						    // hash function
 			A[hu % n]=true;	    // set every hashed position bit
@@ -41,7 +41,7 @@ public class Bloom<Key>{
 		return true;
 	}
 	
-	public static void main(String args[]){ //for testing
+	public static void main(String args[]) { //for testing
 		if(args.length != 2){
 			System.err.println("should be two arguments: n k");
 			System.exit(0);
@@ -50,7 +50,7 @@ public class Bloom<Key>{
 		int k = Integer.parseInt(args[1]);
 
 
-		String ss[] = {"Tony","Chaitanya","William","Junhao"};
+		String ss[] = {"Tony", "Chaitanya", "William", "Junhao"};
 		int m=100;
 		Bloom<String> sb = new Bloom(n,k);
 		Bloom<Integer> si = new Bloom(n,k);
@@ -59,15 +59,15 @@ public class Bloom<Key>{
 		}
 		for(String s:ss){
 			if(sb.query(s)){
-				System.out.println("Yes: "+s);
+				System.out.println("Yes: " + s);
 			}
 		}
-		for(int i = 0;i<m;i+=3){
+		for(int i = 0; i<m; i+=3){
 			si.insert(i);
 		}
-		for(int i = 0;i<m;i++){
+		for(int i = 0; i<m; i++){
 			if(si.query(i) && i %3 != 0){
-				System.out.println("Yes: "+i);
+				System.out.println("Yes: " + i);
 			}
 		}
 	}

@@ -4,7 +4,7 @@
 // Aug 2017-20
 
 public class Hash{
-	private int p = 65536; //24593; //smaller than 2^15
+	private int p = 24593; //smaller than 2^15
 	private int a, b;		// only use for hash tables < 24593 in size
 	
 	public Hash() {
