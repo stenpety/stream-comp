@@ -21,7 +21,7 @@ public class Reservoir{
 	public int report(int S[]){
 		// tell us what's inside, by copying into S
 		// use the returned int to say how many integers are in the sample! (what if n<k?!)
-
+		return 0;
 	}
 	
 	public static void main(String args[]){
